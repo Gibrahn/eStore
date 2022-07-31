@@ -1,12 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import "./Products.css";
+import QuantityPicker from "./QuantityPicker"
 
-const Products = () => {
-  const [data, setData] = useState([]);
+const Product = () => {
   return (
-    <div>
+    <div className="product">
+      <h1>Product</h1>
 
+      <QuantityPicker></QuantityPicker>
+      <button className="btn btn-sm btn-primary">Add to cart</button>
     </div>
-  );
+  )
 }
 
-export default Products;
+export default Product;
