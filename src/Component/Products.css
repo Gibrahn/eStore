@@ -1,14 +1,13 @@
-.product {
-  border: 1px solid darkblue;
+.product{
+  border: 1px solid black;
   margin-bottom: 10px;
-  background-color: beige;
-  border-radius: 6px;
-  width: 300px;
+  background-color: white;
+  width: 300px ;
   height: 400px;
   margin-right: 10px;
 }
 
-.product img {
-  width: 250px;
+.product img{
+  width: 230px;
   height: 250px;
 }
