@@ -1,6 +1,7 @@
  import "./Admin.css";
 
  const Admin = () => {
+
   return (
     <div className="admin-page">
       <div className="sections-container">
@@ -23,17 +24,31 @@
                             <label>Price:</label>
                             <input  name="price" type="text" />
                         </div>
-                        <div className="my-control">
-                        <button >Register Product</button>
+                        <div className="text-center">
+                        <button type="button" className="btn btn-primary">Register Product</button>
                         </div>
                         <div className="product-list">
-                      <ul>
-                        {allProducts.map(product => <li key={product._id}>{product.title} - {product.image} -{product.category} - {product.price} </li>)}
-                      </ul>
                         </div>
                     </div>
                 </sections>
+                <section className='sec-coupons'>
+                    <h4>Manage Coupons</h4>
+                    <div className='my-control'>
+                        <label>Coupon Code: </label>
+                        <input name="coupon" type ="text"></input>
+                        </div>
+                        <div className='my-control'>
+                        <label>Discount: </label>
+                        <input name="discount" type ="number"></input>
+                        </div>
+                        <div className='text-center'>
+                        <button type="button" class="btn btn-primary">Save Coupon</button>
+                        </div>
+                    
+                </section>
           </div>
     </div>
   );
 };
+
+export default Admin;
