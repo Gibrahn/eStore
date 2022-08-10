@@ -1,4 +1,5 @@
-.catalog .product {
-  display: inline-block;
+.catalog  {
+    display: flex; /* or inline-flex */
+    flex-direction: row
 }
 

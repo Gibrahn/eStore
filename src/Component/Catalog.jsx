@@ -17,6 +17,7 @@ const Catalog = () => {
   }, []);
 
   return (
+    
     <div className="catalog">
       <h6>There are {products.length} in stock</h6>
     </div>
