@@ -1,15 +1,37 @@
+import React from "react";
 import "./Products.css";
+import QuantityPicker from "./QuantityPicker";
+import { useState, useContext } from "react";
+import store from "../context/storeContext"
 
+const Product = (props) => {
+    const [quantity, setQuantity] = useState(1);
+    let addProdToCart = useContext(store).addProdToCart;
 
-const Product = () => {
-  return (
+    const handleQuantityChange = (val) => {
+        console.log("The quantity changed!", val);
+        setQuantity(val);
+    };
+
+    const handleAdd = () => {
+      let prod = {...props.info, quantity: quantity};
+      addProdToCart(prod);
+    }
+
+    return (
     <div className="product">
-      <h1>Product</h1>
+        <img src={"/images/" + props.info.image} alt="Product"></img>
+        
+        <h5>{props.info.title}</h5>
 
-      
-      <button className="btn btn-sm btn-primary">Add to cart</button>
-    </div>
-  )
+        <label className="Price:">$ {(props.info.price * 1).toFixed(2)}</label>
+        <label className="Total:">$ {(props.info.price * quantity).toFixed(2)}</label>
+
+        <QuantityPicker onChange={handleQuantityChange}></QuantityPicker>
+
+        <button onClick={handleAdd} className="btn btn-sm btn-info">Add to cart</button>
+    </div>      
+    );
 }
 
 export default Product;

@@ -24,7 +24,7 @@ const NavBar = () => {
         <Link className="nav-link" to="/Admin">Admin</Link>
         </li> 
         <li className="nav-item">
-          <a className="nav-link" href="#">Account</a>
+          <Link className="nav-link" to="/Cart">Cart</Link>
         </li>
       </ul>
     </div>

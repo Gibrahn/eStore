@@ -1,6 +1,8 @@
+import React from "react";
 import "./Cart.css";
 import store from "../context/storeContext";
 import ProductInCart from "./productInCart";
+import { useContext } from "react";
 
 const getTotal = () => {
   let total = 0;
