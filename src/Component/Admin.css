@@ -1,25 +1,31 @@
-.admin-page .section-container {
+.admin-page .sections-container {
   display: flex;
-}
-.admin-page .section-products {
-  flex: 5;
-}
-.admin-page .sex-coupons {
-  flex: 3;
-}
-.my-control{
-  margin-bottom: 10px;
-}
-.my-control label {
-  display: inline-block;
-  width: 120px;
-  text-align: right;
-  margin-right: 7px;
+  margin-top: 35px;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.admin-page .alert {
-margin: 15px 250px;
+.admin-page .sec-products {
+  flex: 1;
 }
-.my-control input {
-  width: 230px;
+
+.admin-page .sec-coupons {
+  flex: 1;
+}
+
+.my-control label {
+  display: inline-block;
+  width: 175px;
+  text-align: right;
+  margin-bottom: 10px;
+  margin-right: 5px;
+}
+
+h4{
+  text-align: center;
+}
+
+.text-center{
+  margin-top: 10px;
 }

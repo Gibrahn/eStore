@@ -1,29 +1,23 @@
 import "./App.css";
 import NavBar from "./Component/NavBar";
 import Catalog from "./Component/Catalog";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Admin from "./Component/Admin";
-import Cart from "./Component/Cart";
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import GlobalStoreProvider from "./context/globalStoreProvider";
+import Home from "./Component/Home";
 
 function App() {
   return (
-    <>
-      <div className="App">
-        <GlobalStoreProvider>
-          <BrowserRouter>
-            <NavBar></NavBar>
+    <div className="App">
+      <BrowserRouter>
+        <NavBar></NavBar>
 
-            <Routes>
-              <Route path="/catalog" element={<Catalog />}></Route>
-              <Route path="/admin" element={<Admin />}></Route>
-              <Cart path="/cart"></Cart>
-            </Routes>
-          </BrowserRouter>
-        </GlobalStoreProvider>
-      </div>
-    </>
+        <Routes>
+          <Route path="/Home" exact element={<Home />}></Route>
+          <Route path="/Catalog" exact element={<Catalog />}></Route>
+          <Route path="/Admin" exact element={<Admin />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
