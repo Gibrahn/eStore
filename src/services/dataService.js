@@ -2,15 +2,12 @@ import axios from "axios";
 
 class DataService {
   async getCatalog() {
-    console.log("loading catalog")
     let response = await axios.get("http://127.0.0.1:5000/api/catalog");
+    console.log("getting catalog", response.data)
     return response.data;
   }
   async getCoupons() {
-    console.log("calling server");
-
     let response = await axios.get("http://127.0.0.1:5000/api/couponCodes");
-    console.log("retrieved", response.data);
     return response.data;
   }
 

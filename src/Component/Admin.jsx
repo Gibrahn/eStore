@@ -2,6 +2,7 @@ import React from 'react'
 import "./Admin.css";
 import { useState, useEffect } from 'react';
 import DataService from '../services/dataService';
+import { Link } from 'react-router-dom';
 
 const Admin = () => {
     const [product, setProduct] = useState({});
@@ -127,7 +128,8 @@ const Admin = () => {
                    <div className="form">
                         <div className="my-control">
                         <label for="sport">Sport:</label>
-                            <select name="sport" id="sport">
+                            <select name="sport" id="sport" onChange={handleTextChange}>
+                            <option value="">Select Sport</option>
                             <option value="NBA">NBA</option>
                             <option value="MLB">MLB</option>
                             <option value="NHL">NHL</option>
@@ -136,7 +138,8 @@ const Admin = () => {
                        </div>
                        <div className="my-control">
                        <label for="category">Category:</label>
-                            <select name="category" id="category">
+                            <select name="category" id="category" onChange={handleTextChange}>
+                            <option value="">Choose Category</option>
                             <option value="Mens">Mens</option>
                             <option value="Womens">Womens</option>
                             <option value="Kids">Kids</option>
@@ -175,7 +178,9 @@ const Admin = () => {
                        <div className='text-center'>
                        <button onClick={saveCoupon} type="button" class="btn btn-primary">Save Coupon</button>
                        </div>
-                   
+                   <p> <Link className="btn btn-lg btn primary" to="/AdminProducts">
+             Products
+          </Link></p>
                </section>
          </div>
    </div>
