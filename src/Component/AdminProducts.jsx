@@ -11,7 +11,6 @@ const AdminProducts = () => {
       const service = new DataService();
       let prods = await service.getCatalog();
       setProducts(prods);
-      console.log("printing", products);
     };
   
     useEffect(() => {
@@ -20,27 +19,32 @@ const AdminProducts = () => {
     
 
   return (
-   <div className="product-management">
+<div className="product-management">
     <h1>Product Management</h1>
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Sport</th>
-      <th scope="col">Category</th>
-      <th scope="col">Title</th>
-      <th scope="col">Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td></td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-  </tbody>
-</table>
-   </div>
+    <table className="table">
+      <thead className="table-dark">
+        <tr>
+          <th scope="col">Sport</th>
+          <th scope="col">Category</th>
+          <th scope="col">Title</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+          {
+            products.map(product => (
+            <tr className="table-light" key={product._id}>
+              <td>{product.sport}</td>
+              <td>{product.category}</td>
+              <td>{product.title}</td>
+              <td>{product.price}</td>
+            </tr>
+            ))
+          }
+
+      </tbody>
+    </table>
+  </div>
     
   );
 

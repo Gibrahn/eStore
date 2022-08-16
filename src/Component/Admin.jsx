@@ -181,6 +181,9 @@ const Admin = () => {
                    <p> <Link className="btn btn-lg btn primary" to="/AdminProducts">
              Products
           </Link></p>
+                    <p> <Link className="btn btn-lg btn primary" to="/AdminCoupons">
+             Coupons
+          </Link></p>
                </section>
          </div>
    </div>

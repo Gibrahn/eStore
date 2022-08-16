@@ -6,6 +6,7 @@ import Admin from "./Component/Admin";
 import Home from "./Component/Home";
 import Cart from "./Component/Cart";
 import AdminProducts from "./Component/AdminProducts";
+import AdminCoupons from "./Component/AdminCoupons";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/Admin" exact element={<Admin />}></Route>
           <Route path="/Cart" exact element={<Cart />}></Route>
           <Route path="/AdminProducts" exact element={<AdminProducts />}></Route>
+          <Route path="/AdminCoupons" exact element={<AdminCoupons />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
