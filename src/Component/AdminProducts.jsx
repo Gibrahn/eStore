@@ -16,6 +16,11 @@ const AdminProducts = () => {
     useEffect(() => {
       loadCatalog();
     }, []);
+
+    // const handleDeleteProduct = async () => {
+    //   const response = await deleteProduct(rowData._id)
+    //   getCatalog();
+    // }
     
 
   return (
