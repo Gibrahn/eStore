@@ -1,10 +1,12 @@
-import React from "react";
+
 import "./Products.css";
 import QuantityPicker from "./QuantityPicker";
 import { useState, useContext } from "react";
-import store from "../context/storeContext"
+import store from "../context/storeContext";
+
 
 const Product = (props) => {
+    const [val, serVal] = useState();
     const [quantity, setQuantity] = useState(1);
     let addProdToCart = useContext(store).addProdToCart;
 
@@ -14,8 +16,8 @@ const Product = (props) => {
     };
 
     const handleAdd = () => {
-      let prod = {...props.info, quantity: quantity};
-      addProdToCart(prod);
+     
+      addProdToCart(props.info);
     }
 
     return (

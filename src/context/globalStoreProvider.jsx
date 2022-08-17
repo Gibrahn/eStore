@@ -1,12 +1,15 @@
 import store from "./storeContext";
 import { useState } from "react";
 
+
 const GlobalStoreProvider = (props) => {
 
   let [cart, setCart] = useState([]);
   let [mockUser, setMockUser] = useState({ id: 42, email: "bart@simpson.com"});
 
-  let addProdToCart = (prod) => {
+  let addProdToCart = (props) => {
+
+    console.log('adding product to cart');
     //add prod to cart
     let copy = [...cart];
     copy.push(prod);
@@ -14,14 +17,14 @@ const GlobalStoreProvider = (props) => {
   };
 
   let removeProdFromCart = () => {
-    console.log("Adding prod");
+    console.log("removing prod");
   };
 
   return (
     <store.Provider 
     value={{
       cart: cart,
-      /*user: mockUser,*/
+      user: mockUser,
       addProdToCart: addProdToCart,
       removeProdFromCart: removeProdFromCart,
     }}>

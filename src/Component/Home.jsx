@@ -7,9 +7,6 @@ const Home = () => {
   return (
       <div className="home">
           <h1>Welcome to the eStore</h1>
-      
-
-      
           <Link className="btn btn-lg btn primary" to="/Catalog">
               Check out our Catalog!
           </Link>

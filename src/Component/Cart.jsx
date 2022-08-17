@@ -17,22 +17,21 @@ const getTotal = () => {
 const Cart = () => {
   const cart = useContext(store).cart;
   return (
-    <div>
+    <div class="cart">
       <h1>Your cart</h1>
       <h5>Currently you have {cart.length} products in the cart</h5>
-
-      <div>
-        <div className="products">
-            { cart.map((prod) => (
-            <ProductInCart  key={prod._id} info={prod}></ProductInCart>
-            ))}
-        </div>
+        
+      <div className="cart-content">
+            <div className="products">
+              { cart.map((prod) => (
+              <ProductInCart  key={prod._id} info={prod}></ProductInCart>
+              ))}
+            </div>
         <div className="side-panel">
           <h6>Are you ready to pay?</h6>
           <h5>{getTotal()}</h5>
           <hr />
           <button className="btn btn-block btn-primary">Proceed to Payment</button>
-
         </div>
       </div>
     </div>

@@ -1,8 +1,11 @@
 import "./NavBar.css";
 import React from 'react';
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import store from "../context/storeContext"
 
 const NavBar = () => {
+  const cart = useContext(store).cart;
 
   return (
     <div>
@@ -23,10 +26,10 @@ const NavBar = () => {
         <li className="nav-item">
         <Link className="nav-link" to="/Admin">Admin</Link>
         </li> 
-        <li className="nav-item">
-          <Link className="nav-link" to="/Cart">Cart</Link>
-        </li>
       </ul>
+      <form className="d-flex">
+          <Link className="btn btn-outline-success" to="/Cart">Cart: {cart.length}</Link>
+      </form>
     </div>
   </div>
 </nav>
