@@ -4,18 +4,19 @@ import store from "../context/storeContext";
 import ProductInCart from "./productInCart";
 import { useContext } from "react";
 
-const getTotal = () => {
-  let total = 0;
-  for (let i = 0; i < Cart.length; i++) {
-    let prod = Cart[i]
-    total += prod.quantity * prod.price
-  }
-  
-  return "$ " + total.toFixed(2)
-}
 
 const Cart = () => {
   const cart = useContext(store).cart;
+  const getTotal = () => {
+    let total = 0;
+    for (let i = 0; i < cart.length; i++) {
+      let prod = cart[i]
+      total += prod.quantity * prod.price
+    }
+    
+    return "$ " + total.toFixed(2)
+  }
+
   return (
     <div class="cart">
       <h1>Your cart</h1>

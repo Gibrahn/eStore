@@ -7,10 +7,12 @@ import Home from "./Component/Home";
 import Cart from "./Component/Cart";
 import AdminProducts from "./Component/AdminProducts";
 import AdminCoupons from "./Component/AdminCoupons";
+import GlobalStoreProvider from './context/globalStoreProvider';
 
 function App() {
   return (
     <div className="App">
+      <GlobalStoreProvider>
       <BrowserRouter>
         <NavBar></NavBar>
 
@@ -23,6 +25,7 @@ function App() {
           <Route path="/AdminCoupons" exact element={<AdminCoupons />}></Route>
         </Routes>
       </BrowserRouter>
+      </GlobalStoreProvider>
     </div>
   );
 }
