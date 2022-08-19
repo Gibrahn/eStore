@@ -7,7 +7,7 @@ const GlobalStoreProvider = (props) => {
   let [cart, setCart] = useState([]);
   let [mockUser, setMockUser] = useState({ id: 42, email: "bart@simpson.com"});
 
-  let addProdToCart = (props) => {
+  let addProdToCart = (prod) => {
 
     console.log('adding product to cart');
     //add prod to cart

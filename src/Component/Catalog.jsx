@@ -17,12 +17,16 @@ const Catalog = () => {
   }, []);
 
   return (
-    
     <div className="catalog">
-        <h1>Catalog</h1>
-        {products.map((prod) => (
+        <div className="name">
+          <h1>Catalog</h1>
+        </div>
+        <div className="products">
+          {products.map((prod) => (
             <Product key= {prod._id} info={prod}></Product>
         ))}
+        </div>
+          
     </div>
     
   )

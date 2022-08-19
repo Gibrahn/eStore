@@ -1,5 +1,23 @@
-.catalog  {
-    display: flex; /* or inline-flex */
-    flex-direction: row
+.catalog .name h1{
+  display: flex;
+  position: absolute;
+  text-align: center;
+}
+.catalog .products{
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction:row;
+  padding: 5%;
+  flex-grow: 1;
+  flex-basis: 16%;
+  display: flex;
+}
+
+@media (max-width: 920px) {
+  .catalog {
+    flex: 1 21%;
+  }
 }
 
