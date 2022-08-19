@@ -16,8 +16,12 @@ const GlobalStoreProvider = (props) => {
     setCart(copy);
   };
 
-  let removeProdFromCart = () => {
+  let removeProdFromCart = (prod) => {
     console.log("removing prod");
+
+    let copy = [...cart];
+    copy.splice(prod, 1);
+    setCart(copy);
   };
 
   return (

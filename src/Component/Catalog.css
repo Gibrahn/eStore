@@ -1,5 +1,6 @@
-.catalog .name h1{
+.catalog h1{
   display: flex;
+  flex-direction: row;
   position: absolute;
   text-align: center;
 }

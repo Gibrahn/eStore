@@ -1,10 +1,18 @@
 import "./productInCart.css";
-
+import QuantityPicker from "./QuantityPicker";
+import { useState, useContext } from "react";
+import store from "../context/storeContext";
 
 const ProductInCart = (props) => {
+  const [quantity, setQuantity] = useState(1);
+  let removeProdFromCart = useContext(store).removeProdFromCart;
 
   const getTotal = () =>{
     return "$ " + (props.info.quantity * props.info.price).toFixed(2);
+  }
+  const handleDelete = () => {
+    let prod = {...props.info, quantity: quantity};
+    removeProdFromCart(prod);
   }
 
   return (
@@ -17,7 +25,7 @@ const ProductInCart = (props) => {
     <label>{props.info.quantity}</label>
     <label>{getTotal()}</label>
 
-    <button className="btn btn-sm btn-danger">Del</button>
+    <button onClick={handleDelete} className="btn btn-sm btn-danger">Del</button>
   </div>
   );
 };
