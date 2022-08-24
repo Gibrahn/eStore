@@ -17,12 +17,9 @@ const AdminProducts = () => {
       loadCatalog();
     }, []);
 
-    // const handleDeleteProduct = async () => {
-    //   const response = await deleteProduct(rowData._id)
-    //   getCatalog();
-    // }
+    const handleDeleteProduct = async () => {
+    }
     
-
   return (
 <div className="product-management">
     <h1>Product Management</h1>
@@ -33,6 +30,7 @@ const AdminProducts = () => {
           <th scope="col">Category</th>
           <th scope="col">Title</th>
           <th scope="col">Price</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -43,6 +41,7 @@ const AdminProducts = () => {
               <td>{product.category}</td>
               <td>{product.title}</td>
               <td>{product.price}</td>
+              <td><button className="btn btn-danger">Delete</button></td>
             </tr>
             ))
           }

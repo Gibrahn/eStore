@@ -26,5 +26,13 @@ class DataService {
     );
     return response.data;
   }
+
+  async delProduct(product) {
+    let response = await axios.delete(
+      "http://127.0.0.1:5000/api/catalog/${id}",
+      product
+    );
+    return response.data;
+  }
 }
 export default DataService;
