@@ -16,6 +16,13 @@ const AdminCoupons = () => {
     useEffect(() => {
       loadCoupons();
     }, []);
+
+    const handleDeleteCoupon = async (_id) => {
+      const service = new DataService();
+      let response = await service.delCoupon(_id);
+      loadCoupons()
+    };
+    
     
 
   return (
@@ -26,6 +33,8 @@ const AdminCoupons = () => {
         <tr>
           <th scope="col">Coupon Code</th>
           <th scope="col">Discount</th>
+          <th scope="col">Action</th>
+          
         </tr>
       </thead>
       <tbody>
@@ -34,6 +43,7 @@ const AdminCoupons = () => {
             <tr className="table-light" key={coupon._id}>
               <td>{coupon.couponCode}</td>
               <td>{coupon.discount}</td>
+              <td><button onClick={() => handleDeleteCoupon(coupon._id)} className="btn btn-danger">Delete</button></td>
             </tr>
             ))
           }

@@ -27,10 +27,18 @@ class DataService {
     return response.data;
   }
 
-  async delProduct(product) {
+  async delProduct(_id) {
     let response = await axios.delete(
-      "http://127.0.0.1:5000/api/catalog/${id}",
-      product
+      `http://127.0.0.1:5000/api/catalog/${_id}`,
+      _id
+    );
+    return response.data;
+  }
+
+  async delCoupon(_id) {
+    let response = await axios.delete(
+      `http://127.0.0.1:5000/api/couponCodes/${_id}`,
+      _id
     );
     return response.data;
   }

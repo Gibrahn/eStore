@@ -122,9 +122,20 @@ const Admin = () => {
     
  return (
    <div className="admin-page">
+        <div className="admin-subpage">
+            <div className="sub-products">
+            <Link className="btn btn-lg btn primary" to="/AdminProducts">
+             Manage Products </Link>
+             </div>
+
+            <div className="sub-coupons">          
+            <Link className="btn btn-lg btn primary" to="/AdminCoupons">
+             Manage Coupons </Link>
+             </div>
+        </div>
      <div className="sections-container">
                <sections className="sec-products">
-                   <h4>Manage Products</h4>
+                   <h4>Create New Product</h4>
                    <div className="form">
                         <div className="my-control">
                         <label for="sport">Sport:</label>
@@ -166,7 +177,7 @@ const Admin = () => {
                </sections>
                <section className='sec-coupons'>
                { errorVisible ? <div className='alert alert-danger'>{errorMessage}</div> : null}
-                   <h4>Manage Coupons</h4>
+                   <h4>Create New Coupon</h4>
                    <div className='my-control'>
                        <label>Coupon Code: </label>
                        <input onChange={handleCoupon} name="couponCode" type ="text"></input>
@@ -178,12 +189,6 @@ const Admin = () => {
                        <div className='text-center'>
                        <button onClick={saveCoupon} type="button" class="btn btn-primary">Save Coupon</button>
                        </div>
-                   <p> <Link className="btn btn-lg btn primary" to="/AdminProducts">
-             Products
-          </Link></p>
-                    <p> <Link className="btn btn-lg btn primary" to="/AdminCoupons">
-             Coupons
-          </Link></p>
                </section>
          </div>
    </div>

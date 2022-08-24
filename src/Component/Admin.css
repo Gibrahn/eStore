@@ -29,3 +29,9 @@ h4{
 .text-center{
   margin-top: 10px;
 }
+
+.admin-subpage {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}

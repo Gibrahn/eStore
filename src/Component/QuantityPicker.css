@@ -5,3 +5,8 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 5px 10px;
 }
+
+.quantity-picker button{
+  margin-left: 7px;
+  margin-right: 7px;
+}

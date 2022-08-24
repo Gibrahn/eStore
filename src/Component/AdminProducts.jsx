@@ -17,9 +17,13 @@ const AdminProducts = () => {
       loadCatalog();
     }, []);
 
-    const handleDeleteProduct = async () => {
-    }
+    const handleDeleteProduct = async (_id) => {
+      const service = new DataService();
+      let response = await service.delProduct(_id);
+      loadCatalog()
+    };
     
+
   return (
 <div className="product-management">
     <h1>Product Management</h1>
@@ -41,7 +45,7 @@ const AdminProducts = () => {
               <td>{product.category}</td>
               <td>{product.title}</td>
               <td>{product.price}</td>
-              <td><button className="btn btn-danger">Delete</button></td>
+              <td><button onClick={() => handleDeleteProduct(product._id)} className="btn btn-danger">Delete</button></td>
             </tr>
             ))
           }
