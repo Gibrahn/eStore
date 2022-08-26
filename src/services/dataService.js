@@ -42,5 +42,13 @@ class DataService {
     );
     return response.data;
   }
+
+  async editCoupon(_id) {
+    let response = await axios.put(
+      `http://127.0.0.1:5000/api/couponCodes/${_id}`,
+      _id
+    );
+    return response.data
+  }
 }
 export default DataService;

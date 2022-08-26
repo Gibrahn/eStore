@@ -1,0 +1,49 @@
+.home{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home p {
+    font-size: 48px;
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    text-decoration: underline;
+    margin-top: 50%;
+    opacity: 1;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.home-mens {
+    background-image: url("/public/images/menshome.jpg");
+    background-size: cover;
+    height: 100vh;
+    width: 75vh;
+    border: solid black 3px;
+    opacity: 0.8;
+    margin-right: 25px;
+}
+
+.home-womens {
+    background-image: url("/public/images/homewomens.jpg");
+    background-size: cover;
+    height: 100vh;
+    width: 75vh;
+    border: solid black 3px;
+    opacity: 0.8;
+    margin-right: 25px;
+}
+
+.home-kids {
+    background-image: url("/public/images/kidshome.jpg");
+    background-size: cover;
+    height: 100vh;
+    width: 75vh;
+    border: solid black 3px;
+    opacity: 0.8;
+}
