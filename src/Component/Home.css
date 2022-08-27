@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .home{
     display: flex;
     justify-content: space-evenly;
@@ -8,15 +14,39 @@
     margin-right: auto;
 }
 
-.home p {
+.homebtn {
+    background: transparent;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
     font-size: 48px;
     color: white;
     text-align: center;
-    font-weight: 700;
-    text-decoration: underline;
+    font-weight: 800;
+    text-decoration: none;
     margin-top: 50%;
     opacity: 1;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    letter-spacing: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: ease-in .5s;
+    cursor: pointer;
+}
+
+.homebtn-a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    transition: ease-in-out .5s;
+}
+
+.homebtn:hover{
+    box-shadow: 0 0 40px white;
+        inset: 200px 0 white;
+}
+
+.homebtn-a:hover{
+    color: rgb(246, 252, 79);
 }
 
 .home-mens {

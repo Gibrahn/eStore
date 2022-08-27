@@ -1,7 +1,8 @@
 import "./AdminCoupons.css";
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import DataService from '../services/dataService';
+import { useParams } from "react-router-dom";
 
 const AdminCoupons = () => {
 
@@ -22,36 +23,54 @@ const AdminCoupons = () => {
       let response = await service.delCoupon(_id);
       loadCoupons()
     };
+
+    // const handleEditCoupon = async (_id, coupon) => {
+    //   const service = new DataService(param._id)
+    //   let
+    // }
     
     
 
   return (
-<div className="product-management">
-    <h1>Coupon Management</h1>
-    <table className="table">
-      <thead className="table-dark">
-        <tr>
-          <th scope="col">Coupon Code</th>
-          <th scope="col">Discount</th>
-          <th scope="col">Action</th>
-          
-        </tr>
-      </thead>
-      <tbody>
-          {
-            coupon.map(coupon => (
-            <tr className="table-light" key={coupon._id}>
-              <td>{coupon.couponCode}</td>
-              <td>{coupon.discount}</td>
-              <td><button onClick={() => handleDeleteCoupon(coupon._id)} className="btn btn-danger">Delete</button></td>
+<div className="coupon-management">
+    <div className="coupon-table">
+        <table className="table">
+          <thead className="table-dark">
+            <tr>
+              <th scope="col">Coupon Code</th>
+              <th scope="col">Discount</th>
+              <th scope="col">Action</th>
+              
             </tr>
-            ))
-          }
-
-      </tbody>
-    </table>
+          </thead>
+          <tbody>
+              {
+                coupon.map(coupon => (
+                <tr className="table-light" key={coupon._id}>
+                  <td>{coupon.couponCode}</td>
+                  <td>{coupon.discount}</td>
+                  <td>
+                    <button onClick={() => handleDeleteCoupon(coupon._id)} className="btn btn-success dual-btn">Edit</button>
+                    <button onClick={() => handleDeleteCoupon(coupon._id)} className="btn btn-danger">Delete</button>
+                  </td>
+                </tr>))}
+          </tbody>
+        </table>
   </div>
-    
+  <div className="coupon-edit">
+    <section>
+      <h4>Coupon Edit</h4>
+      <div className="my-control">
+      <label>Coupon Code: </label>
+          <input name="couponCode" type ="text"></input>
+      </div>
+      <div className="my-control">
+      <label>Discount: </label>
+          <input name="discount" type ="text"></input>
+      </div>
+    </section>
+  </div>      
+</div>
   );
 
 };
