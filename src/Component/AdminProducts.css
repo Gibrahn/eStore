@@ -1,0 +1,16 @@
+.product-management{
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+}
+
+.product-edit{
+    flex: 0 0 35%;
+}
+
+.dual-btn{
+    margin-right: 20px;
+}

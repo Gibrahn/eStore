@@ -2,11 +2,11 @@ import "./AdminCoupons.css";
 import React from 'react';
 import { useState, useEffect} from 'react';
 import DataService from '../services/dataService';
-import { useParams } from "react-router-dom";
 
 const AdminCoupons = () => {
 
     const [coupon, setAllCoupons] = useState ([]);
+    const [modifyCoupon, setModifyCoupon] = useState ({})
 
     const loadCoupons = async () => {
         let service = new DataService();
@@ -24,12 +24,30 @@ const AdminCoupons = () => {
       loadCoupons()
     };
 
-    // const handleEditCoupon = async (_id, coupon) => {
-    //   const service = new DataService(param._id)
-    //   let
-    // }
+    const handleEditCoupon = async (_id) => {
+      let modify = coupon.filter(x=>x._id == _id)[0]
+      setModifyCoupon(modify)
+    };
     
+    const handleTextChange = (e) => {
+      let copy = {...modifyCoupon};
+      copy[e.target.name] = e.target.value;
+      setModifyCoupon(copy);
+    };
+
+    const handleEditSubmit = async () => {
+      const service = new DataService();
+      let response = await service.editCoupon(modifyCoupon);
+      loadCoupons()
+    };
+
+
     
+    /**
+     * handle the niput change on the input
+     * write the new text to the modifyCoupon object
+     * on save btn,  send modifyCoupon to server
+     */
 
   return (
 <div className="coupon-management">
@@ -50,7 +68,7 @@ const AdminCoupons = () => {
                   <td>{coupon.couponCode}</td>
                   <td>{coupon.discount}</td>
                   <td>
-                    <button onClick={() => handleDeleteCoupon(coupon._id)} className="btn btn-success dual-btn">Edit</button>
+                    <button onClick={() => handleEditCoupon(coupon._id)} className="btn btn-success dual-btn">Edit</button>
                     <button onClick={() => handleDeleteCoupon(coupon._id)} className="btn btn-danger">Delete</button>
                   </td>
                 </tr>))}
@@ -62,11 +80,14 @@ const AdminCoupons = () => {
       <h4>Coupon Edit</h4>
       <div className="my-control">
       <label>Coupon Code: </label>
-          <input name="couponCode" type ="text"></input>
+          <input name="couponCode" onChange={handleTextChange} value={modifyCoupon.couponCode} type ="text"></input>
       </div>
       <div className="my-control">
       <label>Discount: </label>
-          <input name="discount" type ="text"></input>
+          <input name="discount" onChange={handleTextChange} value={modifyCoupon.discount} type ="text"></input>
+      </div>
+      <div className="my-control text-center">
+        <button onClick={() => handleEditSubmit(modifyCoupon._id)} className="btn btn-primary">Update</button>
       </div>
     </section>
   </div>      
