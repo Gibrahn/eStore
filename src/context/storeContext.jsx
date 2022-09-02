@@ -5,6 +5,7 @@ import React from "react";
 let store = React.createContext({
   cart: [],
   user: {},
+  order: [],
 
   addProdToCart: () => {},
   removeProdFromCart: () => {},

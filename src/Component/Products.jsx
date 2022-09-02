@@ -20,6 +20,7 @@ const Product = (props) => {
         addProdToCart(prod);
     }
 
+   
     return (
     <div className="product">
         <img src={"/images/" + props.info.image} alt="Product"></img>

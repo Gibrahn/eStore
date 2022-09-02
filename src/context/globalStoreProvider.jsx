@@ -6,6 +6,14 @@ const GlobalStoreProvider = (props) => {
 
   let [cart, setCart] = useState([]);
   let [mockUser, setMockUser] = useState({ id: 42, email: "bart@simpson.com"});
+  let [order,setOrder] = useState([]);
+
+  let createOrder = (prod) => {
+    console.log("Order Created")
+    let copy = [...order];
+    setOrder(copy);
+
+  }
 
   let addProdToCart = (prod) => {
 
@@ -29,8 +37,10 @@ const GlobalStoreProvider = (props) => {
     value={{
       cart: cart,
       user: mockUser,
+      order: order,
       addProdToCart: addProdToCart,
       removeProdFromCart: removeProdFromCart,
+      createOrder: createOrder,
     }}>
       {props.children}
     </store.Provider>
