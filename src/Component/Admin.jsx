@@ -40,7 +40,6 @@ const Admin = () => {
         if(product.title.length < 5){
             showError ("Error, Title should have at least 5 characters.")
             return;
-            
         }
 
         if(!product.category){
@@ -74,8 +73,6 @@ const Admin = () => {
     };
 
     const saveCoupon = async () => {
-        
-
         let savedCoupon = {...coupon};
         savedCoupon.discount = parseFloat(savedCoupon.discount)
 
