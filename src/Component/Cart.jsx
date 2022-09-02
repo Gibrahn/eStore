@@ -2,16 +2,25 @@ import React from "react";
 import "./Cart.css";
 import store from "../context/storeContext";
 import ProductInCart from "./productInCart";
+import DataService from "../services/dataService";
 import { useContext } from "react";
 
 
 const Cart = () => {
   const order = useContext(store).order;
-  let createOrder = useContext(store).createOrder;
+  /*let createOrder = useContext(store).createOrder;*/
 
-  const handleCreateOrder = () => {
-    
-    createOrder();
+  const save = async () => {
+    let order = {
+      user: "Gibrahn",
+      products: cart,
+      total: 0,
+      paymentInfo: "Debit"
+    }
+
+    let service = new DataService();
+    let response = await service.saveOrder(order);
+    console.log(response);
 }
 
   const cart = useContext(store).cart;
@@ -20,6 +29,8 @@ const Cart = () => {
     for (let i = 0; i < cart.length; i++) {
       let prod = cart[i]
       total += prod.quantity * prod.price
+
+      console.log(cart)
     }
     
     return "$ " + total.toFixed(2)
@@ -46,7 +57,7 @@ const Cart = () => {
           <hr />
           <button className="btn btn-block btn-primary">Proceed to Payment</button>
 
-          <button onClick={handleCreateOrder} className="btn btn-block btn-primary"></button>
+          <button onClick={save} className="btn btn-block btn-primary">Process Order</button>
         </div>
       </div>
     </div>
