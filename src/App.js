@@ -8,6 +8,9 @@ import Cart from "./Component/Cart";
 import AdminProducts from "./Component/AdminProducts";
 import AdminCoupons from "./Component/AdminCoupons";
 import GlobalStoreProvider from "./context/globalStoreProvider";
+import CatalogMen from './Component/CatalogMen';
+import CatalogWomen from "./Component/CatalogWomen";
+import CatalogKids from "./Component/CatalogKids";
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
             <Route path="/Catalog" exact element={<Catalog />}></Route>
             <Route path="/Admin" exact element={<Admin />}></Route>
             <Route path="/Cart" exact element={<Cart />}></Route>
+            <Route path="/CatalogMen" exact element={<CatalogMen />}></Route>
+            <Route path="/CatalogWomen" exact element={<CatalogWomen />}></Route>
+            <Route path="/CatalogKids" exact element={<CatalogKids />}></Route>
             <Route
               path="/AdminProducts"
               exact

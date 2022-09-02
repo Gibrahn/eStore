@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
 import DataService from "../services/dataService";
-import "./Catalog.css";
+import "./CatalogMen.css";
 import Product from "./Products";
+import { useState, useEffect } from 'react';
 
-const Catalog = () => {
+const CatalogMen = () => {
   const [products, setProducts] = useState ([]);
 
   const loadCatalog = async () => {
     const service = new DataService();
     let prods = await service.getCatalog();
-    setProducts(prods);
+    setProducts(prods.filter(x=>x.category == "Mens"));
   };
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Catalog = () => {
   return (
     <div className="catalog">
         <div className="name">
-          <h1>Catalog</h1>
+          <h1>Men's Catalog</h1>
         </div>
         <div className="products">
           {products.map((prod) => (
@@ -31,4 +31,4 @@ const Catalog = () => {
   )
 };
 
-export default Catalog;
+export default CatalogMen;
