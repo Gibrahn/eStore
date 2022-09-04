@@ -6,7 +6,11 @@ import DataService from '../services/dataService';
 const AdminCoupons = () => {
 
     const [coupon, setAllCoupons] = useState ([]);
-    const [modifyCoupon, setModifyCoupon] = useState ({})
+    const [modifyCoupon, setModifyCoupon] = useState ({});
+    const [errorVisible, setErrorVisible] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+    const [successVisible, setSuccessVisible] = useState(false);
+    const [successMessage, setSuccessMessage] = useState("");
 
     const loadCoupons = async () => {
         let service = new DataService();
@@ -21,6 +25,9 @@ const AdminCoupons = () => {
     const handleDeleteCoupon = async (_id) => {
       const service = new DataService();
       let response = await service.delCoupon(_id);
+      if(response = true){
+        showSuccess("Coupon Deleted")
+      }
       loadCoupons()
     };
 
@@ -35,19 +42,34 @@ const AdminCoupons = () => {
       setModifyCoupon(copy);
     };
 
+    const showError = (text) => {
+      setErrorMessage(text);
+      setErrorVisible(true);
+  };
+
+  const showSuccess = (text) => {
+    setSuccessMessage(text);
+    setSuccessVisible(true);
+};
+
     const handleEditSubmit = async () => {
+      modifyCoupon.discount = parseFloat(modifyCoupon.discount)
+      if(modifyCoupon.couponCode.length < 3){
+        showError("Coupon Code should be at least 3 characters")
+        return;
+      };
+      if(!modifyCoupon.discount || modifyCoupon.discount > 35) {
+        showError("Error, discount can not be more than 35%")
+        return;
+      };
       const service = new DataService();
       let response = await service.editCoupon(modifyCoupon);
+      if(response = true){
+        showSuccess("Coupon updated")
+      }
       loadCoupons()
     };
 
-
-    
-    /**
-     * handle the niput change on the input
-     * write the new text to the modifyCoupon object
-     * on save btn,  send modifyCoupon to server
-     */
 
   return (
 <div className="coupon-management">
@@ -77,6 +99,8 @@ const AdminCoupons = () => {
   </div>
   <div className="coupon-edit">
     <section>
+    { errorVisible ? <div className='alert alert-danger'>{errorMessage}</div> : null}
+    { successVisible ? <div className='alert alert-success'>{successMessage}</div> : null}
       <h4>Coupon Edit</h4>
       <div className="my-control">
       <label>Coupon Code: </label>

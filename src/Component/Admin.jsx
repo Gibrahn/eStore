@@ -9,6 +9,8 @@ const Admin = () => {
     const [coupon, setCoupon] = useState({})
     const [errorVisible, setErrorVisible] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+    const [successVisible, setSuccessVisible] = useState(false);
+    const [successMessage, setSuccessMessage] = useState("");
     const [allCoupons, setAllCoupons] = useState([]);
     const [allProducts, setAllProducts] = useState ([]);
     
@@ -34,36 +36,43 @@ const Admin = () => {
     const showError = (text) => {
         setErrorMessage(text);
         setErrorVisible(true);
-    }
+    };
+
+    const showSuccess = (text) => {
+        setSuccessMessage(text);
+        setSuccessVisible(true);
+    };
+
     const saveProduct = async () => {
-                
-        if(product.title.length < 5){
-            showError ("Error, Title should have at least 5 characters.")
-            return;
-        }
-
-        if(!product.category){
-            showError("Error, Category should not be blank")
-            return;
-        }
-
-        if(!product.image){
-            showError("Image can not be empty")
-            return;
-        }
-
         let savedProduct = {...product};
         savedProduct.price = parseFloat(savedProduct.price)
 
-        if(!savedProduct.price || savedProduct.price < 1){
+        if(savedProduct.title.length < 5){
+            showError ("Error, Title should have at least 5 characters.")
+            return;
+        };
+
+        if(savedProduct.price || savedProduct.price < 1){
             showError("Price must be greater than $1")
             return;
-        }
+        };
+
+        if(savedProduct.category.length < 1){
+            showError("Please select a Category")
+            return;
+        };
+
+        if(savedProduct.image.length < 1){
+            showError("Image can not be empty")
+            return;
+        };
         setErrorVisible(false)
         
         let service = new DataService();
         let response = await service.saveProduct(savedProduct);
-        console.log(response)
+        if(response = true){
+            showSuccess("Product added to Catalog")
+        }
         
 
         let copy = [...allProducts];
@@ -80,20 +89,22 @@ const Admin = () => {
 
         //validation
         //discount cant be greater than 35%
-        if(!savedCoupon.discount || savedCoupon.discount > 35) {
+        if(savedCoupon.discount || savedCoupon.discount > 35) {
             showError("Error, discount can not be more than 35%")
             return;
         }
         //code should have at least 5 chars
-        if(!savedCoupon.couponCode || savedCoupon.couponCode.length < 5) {
-            showError("Coupon code must contain 5 characters.")
+        if(savedCoupon.couponCode || savedCoupon.couponCode.length < 3) {
+            showError("Coupon code must contain 3 characters.")
             return;
         }
         setErrorVisible (false)
 
         let service = new DataService();
         let response = await service.saveCoupon(savedCoupon);
-        console.log(response)
+        if(response = true){
+            showSuccess("Coupon Added")
+        }
        
 
         let copy = [...allCoupons];
@@ -173,7 +184,6 @@ const Admin = () => {
                    </div>
                </sections>
                <section className='sec-coupons'>
-               { errorVisible ? <div className='alert alert-danger'>{errorMessage}</div> : null}
                    <h4>Create New Coupon</h4>
                    <div className='my-control'>
                        <label>Coupon Code: </label>
@@ -188,6 +198,10 @@ const Admin = () => {
                        </div>
                </section>
          </div>
+         <div className="alert">
+               { errorVisible ? <div className='alert alert-danger'>{errorMessage}</div> : null}
+                { successVisible ? <div className='alert alert-success'>{successMessage}</div> : null}
+               </div>
    </div>
  );
 };

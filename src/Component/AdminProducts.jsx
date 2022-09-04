@@ -7,6 +7,10 @@ const AdminProducts = () => {
 
     const [products, setProducts] = useState ([]);
     const [modifyProduct, setModifyProduct] = useState({});
+    const [errorVisible, setErrorVisible] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+    const [successVisible, setSuccessVisible] = useState(false);
+    const [successMessage, setSuccessMessage] = useState("");
 
     const loadCatalog = async () => {
       const service = new DataService();
@@ -21,6 +25,9 @@ const AdminProducts = () => {
     const handleDeleteProduct = async (_id) => {
       const service = new DataService();
       let response = await service.delProduct(_id);
+      if(response = true){
+        showSuccess("Product Deleted")
+      }
       loadCatalog()
     };
     
@@ -35,9 +42,46 @@ const AdminProducts = () => {
       setModifyProduct(copy);
     };
 
+    const showError = (text) => {
+      setErrorMessage(text);
+      setErrorVisible(true);
+  };
+
+  const showSuccess = (text) => {
+    setSuccessMessage(text);
+    setSuccessVisible(true);
+};
+
     const handleEditSubmit = async () => {
+      modifyProduct.price = parseFloat(modifyProduct.price)
+      if(!modifyProduct.price || modifyProduct.price < 1){
+        showError("Price must be greater than $1")
+        return;
+    }
+      if(modifyProduct.category.length < 1){
+        showError ("Please select a categoy")
+        return;
+    };
+    if(modifyProduct.sport.length <1){
+      showError ("Please select a sport")
+      return;
+    };
+    if(modifyProduct.title.length < 5){
+      showError("Please enter a longer title")
+      return;
+    };
+    if(modifyProduct.image.length < 1){
+      showError("Please enter an image")
+      return;
+    };
+
+    setErrorVisible(false)
+
       const service = new DataService();
       let response = await service.editProduct(modifyProduct);
+      if(response = true) {
+        showSuccess("Product Updated")
+      }
       loadCatalog()
     };
 
@@ -75,6 +119,8 @@ const AdminProducts = () => {
 
     <div className="product-edit">
     <section>
+    { errorVisible ? <div className='alert alert-danger'>{errorMessage}</div> : null}
+    { successVisible ? <div className='alert alert-success'>{successMessage}</div> : null}
       <h4>Product Edit</h4>
       <div className="my-control">
       <label for="sport">Sport:</label>
